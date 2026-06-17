@@ -1,0 +1,723 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.G{--ac:#7F77DD;--ac2:#AFA9EC;--bg:#16151a;--bg2:#1e1c24;--bg3:#26232f;--bd:#ffffff18;--bd2:#ffffff28;--tx:#f0eeff;--tx2:#9993bb;--gr:#5DCAA5}
+.G{background:var(--bg);border-radius:16px;padding:1.5rem;font-family:system-ui,sans-serif;color:var(--tx)}
+.hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem}
+.hdr-ic{width:42px;height:42px;background:var(--ac);border-radius:10px;display:flex;align-items:center;justify-content:center}
+.hdr-ic i{font-size:22px;color:#fff}
+.hdr h1{font-size:19px;font-weight:500;color:var(--tx)}
+.hdr p{font-size:12px;color:var(--tx2);margin-top:2px}
+.tabs{display:flex;gap:3px;background:var(--bg2);border-radius:10px;padding:4px;margin-bottom:1.5rem;overflow-x:auto}
+.tab{flex:1;min-width:0;padding:7px 4px;font-size:11px;font-weight:500;text-align:center;border:none;background:transparent;border-radius:7px;cursor:pointer;color:var(--tx2);transition:all .15s;white-space:nowrap;font-family:inherit}
+.tab.on{background:var(--ac);color:#fff}
+.tab i{display:block;font-size:15px;margin-bottom:2px}
+.card{background:var(--bg2);border:0.5px solid var(--bd);border-radius:12px;padding:1.1rem 1.2rem;margin-bottom:.85rem}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:.9rem}
+.f{display:flex;flex-direction:column;gap:4px}
+.f.full{grid-column:1/-1}
+.f label{font-size:11px;font-weight:500;color:var(--tx2);letter-spacing:.03em}
+.f input,.f select{height:36px;border:0.5px solid var(--bd2);border-radius:8px;padding:0 10px;font-size:13px;background:var(--bg3);color:var(--tx);outline:none;font-family:inherit;width:100%}
+.f input:focus,.f select:focus{border-color:var(--ac)}
+.f select option{background:#1e1c24}
+.btn{width:100%;height:38px;background:var(--ac);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;margin-top:2px;display:flex;align-items:center;justify-content:center;gap:6px;transition:opacity .15s}
+.btn:hover{opacity:.88}
+.btn.sec{background:var(--bg3);color:var(--tx);border:0.5px solid var(--bd2)}
+.btn.gr{background:#2a6e58}
+.res{background:var(--bg3);border-radius:10px;padding:1rem 1.2rem;margin-top:.85rem;display:flex;align-items:center;justify-content:space-between}
+.res-v{font-size:30px;font-weight:500;color:var(--ac);font-variant-numeric:tabular-nums}
+.res-l{font-size:11px;color:var(--tx2);margin-bottom:4px;font-weight:500}
+.res-s{font-size:11px;color:var(--tx2);margin-top:3px}
+.srow{display:flex;gap:7px;margin-top:.75rem}
+.ni{flex:1;height:34px;border:0.5px solid var(--bd2);border-radius:8px;padding:0 10px;font-size:12px;background:var(--bg3);color:var(--tx);outline:none;font-family:inherit}
+.ni:focus{border-color:var(--ac)}
+.sbtn{height:34px;padding:0 12px;border:0.5px solid var(--bd2);border-radius:8px;background:transparent;cursor:pointer;font-size:12px;color:var(--tx2);font-family:inherit;display:flex;align-items:center;gap:4px;white-space:nowrap}
+.sbtn:hover{background:var(--bg3);color:var(--tx)}
+.sl{font-size:11px;font-weight:500;color:var(--tx2);margin-bottom:7px;letter-spacing:.04em}
+.dvd{height:.5px;background:var(--bd);margin:.9rem 0}
+.tag{display:inline-block;padding:2px 9px;border-radius:99px;font-size:11px;font-weight:500}
+.tg{background:#27500a;color:#C0DD97}
+.tw{background:#633806;color:#FAC775}
+.tb{background:#791f1f;color:#F09595}
+.mc{background:var(--bg3);border-radius:8px;padding:.85rem 1rem}
+.mc-l{font-size:11px;color:var(--tx2);margin-bottom:5px;font-weight:500}
+.mc-v{font-size:20px;font-weight:500;color:var(--tx)}
+.mg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:.85rem}
+.sr{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.sr input[type=range]{flex:1;accent-color:var(--ac)}
+.sr-v{width:50px;text-align:right;font-size:13px;font-weight:500;color:var(--tx);font-variant-numeric:tabular-nums}
+.fav-i{background:var(--bg2);border:0.5px solid var(--bd);border-radius:10px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+.fav-n{font-size:13px;font-weight:500;color:var(--tx)}
+.fav-m{font-size:11px;color:var(--tx2);margin-top:2px}
+.fav-v{font-size:16px;font-weight:500;color:var(--ac);font-variant-numeric:tabular-nums}
+.fav-a{display:flex;gap:6px;align-items:center}
+.ib{width:28px;height:28px;border:none;background:transparent;cursor:pointer;border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--tx2)}
+.ib:hover{background:var(--bg3)}
+.ib.d:hover{color:#E24B4A}
+.prfl{background:var(--bg2);border:0.5px solid var(--bd);border-radius:10px;padding:10px 14px;cursor:pointer;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between}
+.prfl:hover{border-color:var(--ac)}
+.prfl-n{font-size:13px;font-weight:500;color:var(--tx)}
+.prfl-m{font-size:11px;color:var(--tx2);margin-top:2px}
+.prfl-v{font-size:15px;font-weight:500;color:var(--ac)}
+.cbar{height:8px;border-radius:4px;background:var(--bg3);overflow:hidden;margin:6px 0 3px}
+.cbar-fill{height:100%;border-radius:4px;background:var(--ac);transition:width .3s}
+.empty{text-align:center;padding:2rem 1rem;color:var(--tx2);font-size:13px}
+.empty i{font-size:32px;margin-bottom:8px;display:block;color:var(--tx2)}
+.pill{padding:3px 10px;border-radius:99px;font-size:11px;font-weight:500;border:0.5px solid var(--bd2);background:transparent;cursor:pointer;color:var(--tx2);font-family:inherit}
+.pill.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.presets{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:.85rem}
+.pfb{font-size:12px;line-height:1.6;color:var(--tx2)}
+.pfb strong{color:var(--tx);font-weight:500}
+
+/* PSA FINDER */
+.psa-setup{text-align:center;padding:.5rem 0 .25rem}
+.psa-setup p{font-size:12px;color:var(--tx2);line-height:1.6;margin-bottom:1rem}
+.psa-progress{display:flex;gap:4px;justify-content:center;margin-bottom:1.2rem}
+.psa-dot{width:28px;height:6px;border-radius:3px;background:var(--bg3);transition:all .3s}
+.psa-dot.done{background:var(--ac)}
+.psa-dot.active{background:var(--ac2)}
+.psa-round{text-align:center;padding:.25rem 0}
+.psa-round-label{font-size:11px;color:var(--tx2);margin-bottom:.5rem;font-weight:500;letter-spacing:.04em}
+.psa-choices{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:1rem 0}
+.psa-choice{background:var(--bg3);border:1.5px solid var(--bd2);border-radius:12px;padding:1.2rem 1rem;text-align:center;cursor:pointer;transition:all .2s;display:flex;flex-direction:column;gap:6px}
+.psa-choice:hover{border-color:var(--ac);background:#2a2840}
+.psa-choice.picked{border-color:var(--ac);background:#2a2840}
+.psa-choice-label{font-size:10px;font-weight:600;letter-spacing:.08em;color:var(--tx2)}
+.psa-choice-val{font-size:28px;font-weight:500;color:var(--tx);font-variant-numeric:tabular-nums}
+.psa-choice-sub{font-size:11px;color:var(--tx2)}
+.psa-base-val{font-size:13px;color:var(--tx2);text-align:center;margin:.5rem 0}
+.psa-base-val strong{color:var(--ac)}
+.psa-result{text-align:center;padding:1rem 0}
+.psa-result-crown{font-size:36px;margin-bottom:.5rem}
+.psa-result-val{font-size:48px;font-weight:500;color:var(--ac);font-variant-numeric:tabular-nums;margin-bottom:.25rem}
+.psa-result-label{font-size:12px;color:var(--tx2);margin-bottom:1.2rem}
+.psa-step-hint{font-size:11px;color:var(--tx2);background:var(--bg3);border-radius:8px;padding:.6rem .9rem;text-align:center;margin-bottom:1rem;line-height:1.5}
+</style>
+
+<div class="G">
+
+<div class="hdr">
+  <div class="hdr-ic"><i class="ti ti-crosshair"></i></div>
+  <div>
+    <h1>Rivals Sens Utility</h1>
+    <p>Roblox Rivals · Ultimate sensitivity toolkit</p>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab on" onclick="sw('cvt',this)"><i class="ti ti-arrows-exchange"></i>Convert</button>
+  <button class="tab" onclick="sw('dpi',this)"><i class="ti ti-mouse"></i>DPI</button>
+  <button class="tab" onclick="sw('rbl',this)"><i class="ti ti-device-gamepad-2"></i>Roblox</button>
+  <button class="tab" onclick="sw('ads',this)"><i class="ti ti-zoom-in"></i>ADS</button>
+  <button class="tab" onclick="sw('fnd',this)"><i class="ti ti-brand-finder"></i>Finder</button>
+  <button class="tab" onclick="sw('crs',this)"><i class="ti ti-world"></i>Games</button>
+  <button class="tab" onclick="sw('prf',this)"><i class="ti ti-layout-list"></i>Profiles</button>
+  <button class="tab" onclick="sw('cmp',this)"><i class="ti ti-chart-bar"></i>Compare</button>
+  <button class="tab" onclick="sw('fav',this)"><i class="ti ti-star"></i>Saved</button>
+</div>
+
+<!-- CONVERT -->
+<div id="t-cvt">
+  <div class="card">
+    <div class="sl">Current setup</div>
+    <div class="fg">
+      <div class="f"><label>Old DPI</label><input type="number" id="c-od" placeholder="800" oninput="cCalc()"></div>
+      <div class="f"><label>Old Roblox sens</label><input type="number" id="c-or" placeholder="0.500000" step="any" oninput="cCalc()"></div>
+      <div class="f full"><label>Old Rivals sens</label><input type="number" id="c-ov" placeholder="0.35" step="any" oninput="cCalc()"></div>
+    </div>
+    <div class="dvd"></div>
+    <div class="sl">New setup</div>
+    <div class="fg">
+      <div class="f"><label>New DPI</label><input type="number" id="c-nd" placeholder="800" oninput="cCalc()"></div>
+      <div class="f"><label>New Roblox sens</label><input type="number" id="c-nr" placeholder="0.500000" step="any" oninput="cCalc()"></div>
+    </div>
+    <button class="btn" onclick="cCalc()"><i class="ti ti-calculate"></i> Calculate</button>
+  </div>
+  <div id="c-res" style="display:none">
+    <div class="res">
+      <div><div class="res-l">New Rivals sens</div><div class="res-v" id="c-out">—</div><div class="res-s">Rounded to nearest 0.05</div></div>
+      <i class="ti ti-target" style="font-size:30px;color:var(--ac);opacity:.4"></i>
+    </div>
+    <div class="srow">
+      <input class="ni" id="c-nm" placeholder="Label this preset…">
+      <button class="sbtn" onclick="sv('cvt')"><i class="ti ti-star"></i> Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- DPI -->
+<div id="t-dpi" style="display:none">
+  <div class="card">
+    <div class="fg">
+      <div class="f"><label>Old DPI</label><input type="number" id="d-od" placeholder="800" oninput="dCalc()"></div>
+      <div class="f"><label>Old Roblox sens</label><input type="number" id="d-or" placeholder="0.5" step="any" oninput="dCalc()"></div>
+      <div class="f"><label>Old Rivals sens</label><input type="number" id="d-ov" placeholder="0.35" step="any" oninput="dCalc()"></div>
+      <div class="f"><label>New Roblox sens</label><input type="number" id="d-nr" placeholder="0.5" step="any" oninput="dCalc()"></div>
+      <div class="f full"><label>New Rivals sens</label><input type="number" id="d-nv" placeholder="0.35" step="any" oninput="dCalc()"></div>
+    </div>
+    <button class="btn" onclick="dCalc()"><i class="ti ti-mouse"></i> Calculate DPI</button>
+  </div>
+  <div id="d-res" style="display:none">
+    <div class="res">
+      <div><div class="res-l">Required DPI</div><div class="res-v" id="d-out">—</div><div class="res-s" id="d-sub">—</div></div>
+      <i class="ti ti-mouse" style="font-size:30px;color:var(--ac);opacity:.4"></i>
+    </div>
+    <div class="srow">
+      <input class="ni" id="d-nm" placeholder="Label this result…">
+      <button class="sbtn" onclick="sv('dpi')"><i class="ti ti-star"></i> Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ROBLOX -->
+<div id="t-rbl" style="display:none">
+  <div class="card">
+    <div class="fg">
+      <div class="f"><label>Old DPI</label><input type="number" id="r-od" placeholder="800" oninput="rCalc()"></div>
+      <div class="f"><label>Old Roblox sens</label><input type="number" id="r-or" placeholder="0.5" step="any" oninput="rCalc()"></div>
+      <div class="f"><label>Old Rivals sens</label><input type="number" id="r-ov" placeholder="0.35" step="any" oninput="rCalc()"></div>
+      <div class="f"><label>New DPI</label><input type="number" id="r-nd" placeholder="800" oninput="rCalc()"></div>
+      <div class="f full"><label>New Rivals sens</label><input type="number" id="r-nv" placeholder="0.35" step="any" oninput="rCalc()"></div>
+    </div>
+    <button class="btn" onclick="rCalc()"><i class="ti ti-device-gamepad-2"></i> Calculate Roblox sens</button>
+  </div>
+  <div id="r-res" style="display:none">
+    <div class="res">
+      <div><div class="res-l">New Roblox sens</div><div class="res-v" id="r-out">—</div><div class="res-s">6 decimal places</div></div>
+      <i class="ti ti-device-gamepad-2" style="font-size:30px;color:var(--ac);opacity:.4"></i>
+    </div>
+    <div class="srow">
+      <input class="ni" id="r-nm" placeholder="Label this result…">
+      <button class="sbtn" onclick="sv('rbl')"><i class="ti ti-star"></i> Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADS -->
+<div id="t-ads" style="display:none">
+  <div class="card">
+    <div class="sl">ADS sensitivity calculator</div>
+    <p style="font-size:12px;color:var(--tx2);margin-bottom:1rem;line-height:1.6">Enter your hipfire setup and desired ADS multiplier to get the exact ADS sens that maintains the same feel when scoping in.</p>
+    <div class="fg">
+      <div class="f"><label>DPI</label><input type="number" id="a2-dpi" placeholder="800" oninput="adsCalc()"></div>
+      <div class="f"><label>Roblox sens</label><input type="number" id="a2-rbl" placeholder="0.500000" step="any" oninput="adsCalc()"></div>
+      <div class="f"><label>Hipfire Rivals sens</label><input type="number" id="a2-hip" placeholder="0.35" step="any" oninput="adsCalc()"></div>
+      <div class="f"><label>ADS multiplier</label>
+        <select id="a2-mult" onchange="adsCalc()">
+          <option value="1.0">1.0× — Same as hipfire</option>
+          <option value="0.9">0.9× — Slightly slower</option>
+          <option value="0.8">0.8× — Common competitive</option>
+          <option value="0.75" selected>0.75× — Recommended</option>
+          <option value="0.6667">0.667× — Legacy / 0-FOV match</option>
+          <option value="0.5">0.5× — Very controlled</option>
+          <option value="custom">Custom…</option>
+        </select>
+      </div>
+      <div class="f full" id="a2-custom-wrap" style="display:none"><label>Custom multiplier</label><input type="number" id="a2-custom" placeholder="e.g. 0.85" step="0.01" min="0.1" max="2" oninput="adsCalc()"></div>
+    </div>
+    <button class="btn" onclick="adsCalc()"><i class="ti ti-zoom-in"></i> Calculate ADS sens</button>
+  </div>
+  <div id="ads-res" style="display:none">
+    <div class="res">
+      <div>
+        <div class="res-l">ADS Rivals sens</div>
+        <div class="res-v" id="ads-out">—</div>
+        <div class="res-s" id="ads-sub">—</div>
+      </div>
+      <i class="ti ti-zoom-in" style="font-size:30px;color:var(--ac);opacity:.4"></i>
+    </div>
+    <div class="card" style="margin-top:.85rem">
+      <div class="mg">
+        <div class="mc"><div class="mc-l">Hipfire eDPI</div><div class="mc-v" id="ads-hip-edpi">—</div></div>
+        <div class="mc"><div class="mc-l">ADS eDPI</div><div class="mc-v" id="ads-ads-edpi">—</div></div>
+        <div class="mc"><div class="mc-l">Hipfire 360°</div><div class="mc-v" id="ads-hip-360">—</div></div>
+        <div class="mc"><div class="mc-l">ADS 360°</div><div class="mc-v" id="ads-ads-360">—</div></div>
+      </div>
+    </div>
+    <div class="srow">
+      <input class="ni" id="ads-nm" placeholder="Label this ADS preset…">
+      <button class="sbtn" onclick="sv('ads')"><i class="ti ti-star"></i> Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- PSA FINDER -->
+<div id="t-fnd" style="display:none">
+  <!-- STEP 0: Setup -->
+  <div id="psa-setup-screen">
+    <div class="card">
+      <div class="sl">Your hardware</div>
+      <div class="fg">
+        <div class="f"><label>DPI</label><input type="number" id="psa-dpi" placeholder="800" value="800"></div>
+        <div class="f"><label>Roblox sens</label><input type="number" id="psa-rbl" placeholder="0.500000" step="any" value="0.500000"></div>
+        <div class="f full"><label>Starting Rivals sens (your current best guess)</label><input type="number" id="psa-base" placeholder="0.35" step="0.05" value="0.35"></div>
+      </div>
+      <div class="dvd"></div>
+      <div class="psa-setup">
+        <p>The Sens Finder works like PSA Calculator — 7 rounds of binary search.<br>Each round you test two sensitivities and pick the one that feels more comfortable.<br>After 7 rounds, you get your perfect Rivals sens.</p>
+        <button class="btn" onclick="psaStart()"><i class="ti ti-player-play"></i> Start Finder</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 1-7: Rounds -->
+  <div id="psa-round-screen" style="display:none">
+    <div class="card">
+      <div class="psa-progress" id="psa-dots"></div>
+      <div class="psa-round-label" id="psa-round-label">Round 1 of 7</div>
+      <div class="psa-step-hint" id="psa-hint">Play with each sens for a few minutes, then pick which feels more natural and accurate.</div>
+      <div class="psa-base-val">Current base: <strong id="psa-base-display">0.35</strong></div>
+      <div class="psa-choices">
+        <div class="psa-choice" id="psa-lo-card" onclick="psaPick('lo')">
+          <div class="psa-choice-label">LOWER</div>
+          <div class="psa-choice-val" id="psa-lo-val">—</div>
+          <div class="psa-choice-sub" id="psa-lo-sub">—</div>
+        </div>
+        <div class="psa-choice" id="psa-hi-card" onclick="psaPick('hi')">
+          <div class="psa-choice-label">HIGHER</div>
+          <div class="psa-choice-val" id="psa-hi-val">—</div>
+          <div class="psa-choice-sub" id="psa-hi-sub">—</div>
+        </div>
+      </div>
+      <button class="btn sec" onclick="psaBack()"><i class="ti ti-arrow-left"></i> Go back</button>
+    </div>
+  </div>
+
+  <!-- RESULT -->
+  <div id="psa-result-screen" style="display:none">
+    <div class="card">
+      <div class="psa-result">
+        <div class="psa-result-crown">🎯</div>
+        <div class="psa-result-val" id="psa-final-val">—</div>
+        <div class="psa-result-label">Your perfect Rivals sens</div>
+      </div>
+      <div class="mg">
+        <div class="mc"><div class="mc-l">eDPI</div><div class="mc-v" id="psa-res-edpi">—</div></div>
+        <div class="mc"><div class="mc-l">360° distance</div><div class="mc-v" id="psa-res-360">—</div></div>
+      </div>
+      <div id="psa-res-fb" class="pfb" style="margin-bottom:1rem"></div>
+      <div class="srow" style="margin-bottom:.75rem">
+        <input class="ni" id="psa-nm" placeholder="Label this sens…">
+        <button class="sbtn" onclick="psaSave()"><i class="ti ti-star"></i> Save</button>
+      </div>
+      <button class="btn" onclick="psaReset()"><i class="ti ti-refresh"></i> Start over</button>
+    </div>
+  </div>
+</div>
+
+<!-- GAME CROSSOVER -->
+<div id="t-crs" style="display:none">
+  <div class="card">
+    <div class="sl">Convert from another game</div>
+    <div class="fg">
+      <div class="f"><label>Source game</label>
+        <select id="x-game" onchange="xCalc()">
+          <option value="val">Valorant</option>
+          <option value="csgo">CS2 / CS:GO</option>
+          <option value="fort">Fortnite</option>
+          <option value="ow">Overwatch 2</option>
+          <option value="apex">Apex Legends</option>
+          <option value="r6">Rainbow Six Siege</option>
+        </select>
+      </div>
+      <div class="f"><label>Your DPI</label><input type="number" id="x-dpi" placeholder="800" oninput="xCalc()"></div>
+      <div class="f"><label>Sens in that game</label><input type="number" id="x-sens" placeholder="0.35" step="any" oninput="xCalc()"></div>
+      <div class="f"><label>Roblox sens</label><input type="number" id="x-rbl" placeholder="0.500000" step="any" oninput="xCalc()"></div>
+    </div>
+    <button class="btn" onclick="xCalc()"><i class="ti ti-world"></i> Convert to Rivals</button>
+  </div>
+  <div id="x-res" style="display:none">
+    <div class="res">
+      <div>
+        <div class="res-l" id="x-lbl">Rivals sens</div>
+        <div class="res-v" id="x-out">—</div>
+        <div class="res-s" id="x-sub">—</div>
+      </div>
+      <i class="ti ti-arrows-exchange" style="font-size:30px;color:var(--ac);opacity:.4"></i>
+    </div>
+    <div class="srow">
+      <input class="ni" id="x-nm" placeholder="Label this result…">
+      <button class="sbtn" onclick="sv('crs')"><i class="ti ti-star"></i> Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- PROFILES -->
+<div id="t-prf" style="display:none">
+  <div class="card">
+    <div class="sl">Save full DPI profile</div>
+    <div class="fg">
+      <div class="f full"><label>Profile name</label><input type="text" id="p-nm" placeholder="e.g. 1600 DPI competitive"></div>
+      <div class="f"><label>DPI</label><input type="number" id="p-dp" placeholder="800"></div>
+      <div class="f"><label>Roblox sens</label><input type="number" id="p-rb" placeholder="0.500000" step="any"></div>
+      <div class="f"><label>Rivals sens</label><input type="number" id="p-rv" placeholder="0.35" step="any"></div>
+      <div class="f full"><label>ADS sens (optional)</label><input type="number" id="p-ads" placeholder="0.25" step="any"></div>
+    </div>
+    <button class="btn" onclick="saveProfile()"><i class="ti ti-plus"></i> Save profile</button>
+  </div>
+  <div id="p-list"></div>
+</div>
+
+<!-- COMPARE -->
+<div id="t-cmp" style="display:none">
+  <div class="card">
+    <div class="sl">Compare two setups</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div>
+        <div style="font-size:12px;color:var(--ac);font-weight:500;margin-bottom:8px">Setup A</div>
+        <div class="f" style="margin-bottom:8px"><label>DPI</label><input type="number" id="a-dp" placeholder="800" oninput="cmpCalc()"></div>
+        <div class="f" style="margin-bottom:8px"><label>Roblox sens</label><input type="number" id="a-rb" placeholder="0.5" step="any" oninput="cmpCalc()"></div>
+        <div class="f"><label>Rivals sens</label><input type="number" id="a-rv" placeholder="0.35" step="any" oninput="cmpCalc()"></div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--gr);font-weight:500;margin-bottom:8px">Setup B</div>
+        <div class="f" style="margin-bottom:8px"><label>DPI</label><input type="number" id="b-dp" placeholder="1600" oninput="cmpCalc()"></div>
+        <div class="f" style="margin-bottom:8px"><label>Roblox sens</label><input type="number" id="b-rb" placeholder="0.5" step="any" oninput="cmpCalc()"></div>
+        <div class="f"><label>Rivals sens</label><input type="number" id="b-rv" placeholder="0.35" step="any" oninput="cmpCalc()"></div>
+      </div>
+    </div>
+  </div>
+  <div id="cmp-res" style="display:none">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:.85rem">
+      <div class="card" style="border-color:#7F77DD55">
+        <div style="font-size:11px;color:var(--ac);font-weight:500;margin-bottom:8px">Setup A</div>
+        <div class="mc-l">eDPI</div><div class="mc-v" id="ca-edpi" style="color:var(--ac)">—</div>
+        <div class="mc-l" style="margin-top:8px">360° distance</div><div class="mc-v" id="ca-360">—</div>
+      </div>
+      <div class="card" style="border-color:#5DCAA555">
+        <div style="font-size:11px;color:var(--gr);font-weight:500;margin-bottom:8px">Setup B</div>
+        <div class="mc-l">eDPI</div><div class="mc-v" id="cb-edpi" style="color:var(--gr)">—</div>
+        <div class="mc-l" style="margin-top:8px">360° distance</div><div class="mc-v" id="cb-360">—</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="sl">eDPI comparison</div>
+      <div style="margin-bottom:10px">
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--tx2);margin-bottom:4px"><span>Setup A</span><span id="cbar-a-v">—</span></div>
+        <div class="cbar"><div class="cbar-fill" id="cbar-a" style="background:var(--ac)"></div></div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--tx2);margin-bottom:4px"><span>Setup B</span><span id="cbar-b-v">—</span></div>
+        <div class="cbar"><div class="cbar-fill" id="cbar-b" style="background:var(--gr)"></div></div>
+      </div>
+      <div class="dvd"></div>
+      <div id="cmp-fb" class="pfb"></div>
+    </div>
+  </div>
+</div>
+
+<!-- FAVORITES -->
+<div id="t-fav" style="display:none">
+  <div id="fav-list"></div>
+</div>
+
+</div>
+
+<script>
+const SK='rv_favs2',PK='rv_profs2',LK='rv_last2';
+let favs=[],profs=[],LR={};
+const GAMES={val:{name:'Valorant',mult:0.3235},csgo:{name:'CS2/CS:GO',mult:0.8179},fort:{name:'Fortnite',mult:0.1953},ow:{name:'Overwatch 2',mult:0.4073},apex:{name:'Apex Legends',mult:0.022},r6:{name:'Rainbow Six',mult:0.7457}};
+
+// PSA state
+let psaState={};
+
+function load(){
+  try{favs=JSON.parse(localStorage.getItem(SK)||'[]')}catch(e){favs=[]}
+  try{profs=JSON.parse(localStorage.getItem(PK)||'[]')}catch(e){profs=[]}
+  try{
+    const s=JSON.parse(localStorage.getItem(LK)||'{}');
+    if(s.od)document.getElementById('c-od').value=s.od;
+    if(s.or)document.getElementById('c-or').value=s.or;
+    if(s.ov)document.getElementById('c-ov').value=s.ov;
+    if(s.fd)document.getElementById('psa-dpi').value=s.fd;
+    if(s.fr)document.getElementById('psa-rbl').value=s.fr;
+  }catch(e){}
+}
+
+function save(){
+  try{
+    localStorage.setItem(SK,JSON.stringify(favs));
+    localStorage.setItem(PK,JSON.stringify(profs));
+    localStorage.setItem(LK,JSON.stringify({
+      od:document.getElementById('c-od').value,
+      or:document.getElementById('c-or').value,
+      ov:document.getElementById('c-ov').value,
+      fd:document.getElementById('psa-dpi').value,
+      fr:document.getElementById('psa-rbl').value
+    }));
+  }catch(e){}
+}
+
+function sw(id,btn){
+  document.querySelectorAll('[id^="t-"]').forEach(e=>e.style.display='none');
+  document.querySelectorAll('.tab').forEach(e=>e.classList.remove('on'));
+  document.getElementById('t-'+id).style.display='';
+  if(btn)btn.classList.add('on');
+  if(id==='fav')rendFavs();
+  if(id==='prf')rendProfs();
+}
+
+function rnd5(v){return Math.round(v/0.05)*0.05}
+function g(id){return parseFloat(document.getElementById(id).value)}
+function cm360(edpi){return 2.54/(edpi*0.022)}
+
+function cCalc(){
+  save();
+  const od=g('c-od'),or_=g('c-or'),ov=g('c-ov'),nd=g('c-nd'),nr=g('c-nr');
+  if([od,or_,ov,nd,nr].some(isNaN)||nd*nr===0){document.getElementById('c-res').style.display='none';return}
+  const r=rnd5((od*or_*ov)/(nd*nr));
+  document.getElementById('c-out').textContent=r.toFixed(2);
+  document.getElementById('c-res').style.display='';
+  LR.cvt={val:r.toFixed(2),type:'Rivals sens',dpi:nd,rbl:nr};
+}
+
+function dCalc(){
+  const od=g('d-od'),or_=g('d-or'),ov=g('d-ov'),nr=g('d-nr'),nv=g('d-nv');
+  if([od,or_,ov,nr,nv].some(isNaN)||nr*nv===0){document.getElementById('d-res').style.display='none';return}
+  const r=(od*or_*ov)/(nr*nv),rnd=Math.round(r);
+  const cmn=[400,800,1000,1200,1600,3200].reduce((a,b)=>Math.abs(b-r)<Math.abs(a-r)?b:a);
+  document.getElementById('d-out').textContent=rnd;
+  document.getElementById('d-sub').textContent='Nearest common DPI: '+cmn;
+  document.getElementById('d-res').style.display='';
+  LR.dpi={val:rnd,type:'DPI'};
+}
+
+function rCalc(){
+  const od=g('r-od'),or_=g('r-or'),ov=g('r-ov'),nd=g('r-nd'),nv=g('r-nv');
+  if([od,or_,ov,nd,nv].some(isNaN)||nd*nv===0){document.getElementById('r-res').style.display='none';return}
+  const r=(od*or_*ov)/(nd*nv);
+  document.getElementById('r-out').textContent=r.toFixed(6);
+  document.getElementById('r-res').style.display='';
+  LR.rbl={val:r.toFixed(6),type:'Roblox sens'};
+}
+
+// ADS CALC
+function adsCalc(){
+  const dpi=g('a2-dpi'),rbl=g('a2-rbl'),hip=g('a2-hip');
+  const multSel=document.getElementById('a2-mult').value;
+  const customWrap=document.getElementById('a2-custom-wrap');
+  customWrap.style.display=multSel==='custom'?'':'none';
+  const mult=multSel==='custom'?g('a2-custom'):parseFloat(multSel);
+  if([dpi,rbl,hip,mult].some(isNaN)||mult===0){document.getElementById('ads-res').style.display='none';return}
+  const adsRaw=hip*mult;
+  const adsRnd=rnd5(adsRaw);
+  const hipEdpi=dpi*rbl*hip;
+  const adsEdpi=dpi*rbl*adsRnd;
+  document.getElementById('ads-out').textContent=adsRnd.toFixed(2);
+  document.getElementById('ads-sub').textContent=`${(mult*100).toFixed(0)}% of hipfire (${hip.toFixed(2)})`;
+  document.getElementById('ads-hip-edpi').textContent=hipEdpi.toFixed(1);
+  document.getElementById('ads-ads-edpi').textContent=adsEdpi.toFixed(1);
+  document.getElementById('ads-hip-360').textContent=cm360(hipEdpi).toFixed(1)+' cm';
+  document.getElementById('ads-ads-360').textContent=cm360(adsEdpi).toFixed(1)+' cm';
+  document.getElementById('ads-res').style.display='';
+  LR.ads={val:adsRnd.toFixed(2),type:'ADS Rivals sens',dpi,rbl,mult};
+}
+
+// PSA FINDER
+function psaStart(){
+  const base=g('psa-base');
+  const dpi=g('psa-dpi')||800;
+  const rbl=g('psa-rbl')||0.5;
+  if(isNaN(base)||base<=0){alert('Enter a starting Rivals sens first.');return}
+  psaState={
+    base,dpi,rbl,
+    lo:Math.max(0.05,rnd5(base*0.5)),
+    hi:rnd5(base*1.5),
+    round:1,
+    history:[]
+  };
+  save();
+  psaShowRound();
+  document.getElementById('psa-setup-screen').style.display='none';
+  document.getElementById('psa-round-screen').style.display='';
+  document.getElementById('psa-result-screen').style.display='none';
+}
+
+function psaShowRound(){
+  const s=psaState;
+  const mid=rnd5((s.lo+s.hi)/2);
+  const loVal=rnd5((s.lo+mid)/2);
+  const hiVal=rnd5((mid+s.hi)/2);
+  s.currentLo=loVal;
+  s.currentHi=hiVal;
+  s.currentMid=mid;
+
+  // dots
+  const dots=document.getElementById('psa-dots');
+  dots.innerHTML=Array.from({length:7},(_,i)=>`<div class="psa-dot${i<s.round-1?' done':i===s.round-1?' active':''}"></div>`).join('');
+
+  document.getElementById('psa-round-label').textContent=`Round ${s.round} of 7`;
+
+  const hints=[
+    'Try wide flick shots — which sens lets you land more consistently?',
+    'Track a moving target — which feels smoother and more controlled?',
+    'Do micro-adjustments on a still target — which gives better precision?',
+    'Play a full deathmatch round with each sens — trust your gut.',
+    'Focus on close-range fights — which reacts the way your hand expects?',
+    'Try long-range duels — which gives you more confident crosshair control?',
+    'Final round! Pick the one that felt most natural across all scenarios.'
+  ];
+  document.getElementById('psa-hint').textContent=hints[Math.min(s.round-1,6)];
+  document.getElementById('psa-base-display').textContent=mid.toFixed(2);
+
+  const loEdpi=s.dpi*s.rbl*loVal;
+  const hiEdpi=s.dpi*s.rbl*hiVal;
+  document.getElementById('psa-lo-val').textContent=loVal.toFixed(2);
+  document.getElementById('psa-lo-sub').textContent=cm360(loEdpi).toFixed(1)+' cm / 360°';
+  document.getElementById('psa-hi-val').textContent=hiVal.toFixed(2);
+  document.getElementById('psa-hi-sub').textContent=cm360(hiEdpi).toFixed(1)+' cm / 360°';
+  document.getElementById('psa-lo-card').classList.remove('picked');
+  document.getElementById('psa-hi-card').classList.remove('picked');
+}
+
+function psaPick(side){
+  const s=psaState;
+  document.getElementById('psa-'+side+'-card').classList.add('picked');
+  s.history.push({round:s.round,lo:s.currentLo,hi:s.currentHi,pick:side});
+
+  setTimeout(()=>{
+    if(side==='lo'){s.hi=s.currentMid}else{s.lo=s.currentMid}
+    s.round++;
+    if(s.round>7){psaFinish()}else{psaShowRound()}
+  },350);
+}
+
+function psaBack(){
+  const s=psaState;
+  if(s.round===1){
+    document.getElementById('psa-setup-screen').style.display='';
+    document.getElementById('psa-round-screen').style.display='none';
+    return;
+  }
+  const prev=s.history.pop();
+  s.round--;
+  if(prev.pick==='lo'){s.hi=rnd5(prev.hi*2-prev.lo)}else{s.lo=rnd5(prev.lo*2-prev.hi)}
+  psaShowRound();
+}
+
+function psaFinish(){
+  const s=psaState;
+  const final=rnd5((s.lo+s.hi)/2);
+  s.finalVal=final;
+  const edpi=s.dpi*s.rbl*final;
+  const dist=cm360(edpi);
+
+  document.getElementById('psa-final-val').textContent=final.toFixed(2);
+  document.getElementById('psa-res-edpi').textContent=edpi.toFixed(1);
+  document.getElementById('psa-res-360').textContent=dist.toFixed(1)+' cm';
+
+  let tag,adv;
+  if(dist<15){tag='tb';adv='<strong>Very high sens.</strong> Precise aiming may feel twitchy. Consider going a bit lower.'}
+  else if(dist<22){tag='tw';adv='<strong>High sens.</strong> Great for flick shots — use a large mousepad.'}
+  else if(dist<40){tag='tg';adv='<strong>Balanced.</strong> Solid competitive range — most top players sit here.'}
+  else if(dist<60){tag='tw';adv='<strong>Low sens.</strong> Very controlled. Make sure you have desk space for big swipes.'}
+  else{tag='tb';adv='<strong>Very low sens.</strong> May feel slow in fast fights. Consider going a bit higher.'}
+  document.getElementById('psa-res-fb').innerHTML=`<span class="tag ${tag}">${tag==='tg'?'Recommended':tag==='tw'?'Playable':'Outside range'}</span> ${adv}`;
+
+  LR.fnd={val:final.toFixed(2),type:'Rivals sens (PSA Finder)',dpi:s.dpi,rbl:s.rbl,edpi:edpi.toFixed(1)};
+
+  document.getElementById('psa-round-screen').style.display='none';
+  document.getElementById('psa-result-screen').style.display='';
+}
+
+function psaSave(){
+  sv('fnd');
+  const el=document.getElementById('psa-nm');
+  el.placeholder='Saved!';
+  setTimeout(()=>el.placeholder='Label this sens…',1200);
+}
+
+function psaReset(){
+  psaState={};
+  document.getElementById('psa-result-screen').style.display='none';
+  document.getElementById('psa-round-screen').style.display='none';
+  document.getElementById('psa-setup-screen').style.display='';
+}
+
+function xCalc(){
+  const game=document.getElementById('x-game').value,dpi=g('x-dpi'),sens=g('x-sens'),rbl=g('x-rbl');
+  if([dpi,sens,rbl].some(isNaN)||rbl===0){document.getElementById('x-res').style.display='none';return}
+  const gd=GAMES[game];
+  const edpi360=dpi*sens*gd.mult;
+  const rivRaw=edpi360/(dpi*rbl*0.022);
+  const riv=rnd5(rivRaw);
+  const dist=cm360(dpi*rbl*riv);
+  document.getElementById('x-lbl').textContent='Rivals sens (from '+gd.name+')';
+  document.getElementById('x-out').textContent=riv.toFixed(2);
+  document.getElementById('x-sub').textContent='~'+dist.toFixed(1)+' cm per 360°';
+  document.getElementById('x-res').style.display='';
+  LR.crs={val:riv.toFixed(2),type:'Rivals sens ('+gd.name+')',dpi,rbl};
+}
+
+function cmpCalc(){
+  const ad=g('a-dp'),ar=g('a-rb'),av=g('a-rv'),bd=g('b-dp'),br=g('b-rb'),bv=g('b-rv');
+  if([ad,ar,av,bd,br,bv].some(isNaN)){document.getElementById('cmp-res').style.display='none';return}
+  const ae=ad*ar*av,be=bd*br*bv,a360=cm360(ae),b360=cm360(be),mx=Math.max(ae,be);
+  document.getElementById('ca-edpi').textContent=ae.toFixed(1);
+  document.getElementById('ca-360').textContent=a360.toFixed(1)+' cm';
+  document.getElementById('cb-edpi').textContent=be.toFixed(1);
+  document.getElementById('cb-360').textContent=b360.toFixed(1)+' cm';
+  document.getElementById('cbar-a').style.width=Math.round((ae/mx)*100)+'%';
+  document.getElementById('cbar-b').style.width=Math.round((be/mx)*100)+'%';
+  document.getElementById('cbar-a-v').textContent='eDPI '+ae.toFixed(1);
+  document.getElementById('cbar-b-v').textContent='eDPI '+be.toFixed(1);
+  const diff=Math.abs(ae-be),pct=Math.round((diff/Math.min(ae,be))*100);
+  let fb='';
+  if(pct<5)fb='<strong>Nearly identical.</strong> These setups feel the same in-game.';
+  else if(pct<20)fb='<strong>Slightly different.</strong> Setup '+(ae>be?'A is faster':'B is faster')+' by ~'+pct+'%.';
+  else fb='<strong>Very different.</strong> Setup '+(ae>be?'A is '+pct+'% faster than B':'B is '+pct+'% faster than A')+'. Switching will take adjustment.';
+  document.getElementById('cmp-fb').innerHTML=fb;
+  document.getElementById('cmp-res').style.display='';
+}
+
+function sv(tab){
+  const r=LR[tab];if(!r)return;
+  const nmId={cvt:'c-nm',dpi:'d-nm',rbl:'r-nm',fnd:'psa-nm',crs:'x-nm',ads:'ads-nm'}[tab];
+  const nmEl=document.getElementById(nmId);
+  const name=nmEl.value.trim()||(r.type+' — '+r.val);
+  const meta=r.dpi?'DPI '+r.dpi+(r.rbl?' · Roblox '+parseFloat(r.rbl).toFixed(4):'')+(r.mult?' · ×'+parseFloat(r.mult).toFixed(2):''):'';
+  favs.unshift({id:Date.now(),name,val:r.val,type:r.type,meta,tab});
+  if(favs.length>50)favs.pop();
+  save();
+  nmEl.value='';nmEl.placeholder='Saved!';
+  setTimeout(()=>nmEl.placeholder='Label this preset…',1200);
+}
+
+function saveProfile(){
+  const nm=document.getElementById('p-nm').value.trim(),dp=g('p-dp'),rb=g('p-rb'),rv=g('p-rv');
+  const ads=document.getElementById('p-ads').value.trim();
+  if(!nm||[dp,rb,rv].some(isNaN))return;
+  profs.unshift({id:Date.now(),name:nm,dpi:dp,rbl:rb.toFixed(6),riv:rv.toFixed(2),ads:ads||null});
+  if(profs.length>20)profs.pop();
+  save();
+  ['p-nm','p-dp','p-rb','p-rv','p-ads'].forEach(id=>{const el=document.getElementById(id);el.value='';});
+  document.getElementById('p-nm').placeholder='Saved!';
+  setTimeout(()=>document.getElementById('p-nm').placeholder='e.g. 1600 DPI competitive',1300);
+  rendProfs();
+}
+
+function loadProfile(p){
+  document.getElementById('c-od').value=p.dpi;
+  document.getElementById('c-or').value=p.rbl;
+  document.getElementById('c-ov').value=p.riv;
+  sw('cvt',document.querySelector('.tab'));
+}
+
+function deleteProfile(id){profs=profs.filter(p=>p.id!==id);save();rendProfs()}
+
+function rendProfs(){
+  const el=document.getElementById('p-list');
+  if(!profs.length){el.innerHTML='<div class="empty"><i class="ti ti-layout-list"></i>No profiles yet. Save a full setup above.</div>';return}
+  el.innerHTML='<div class="sl" style="margin-bottom:8px">'+profs.length+' saved profile'+(profs.length>1?'s':'')+'</div>'+profs.map(p=>`<div class="prfl"><div><div class="prfl-n">${p.name}</div><div class="prfl-m">DPI ${p.dpi} · Roblox ${p.rbl} · Rivals ${p.riv}${p.ads?' · ADS '+p.ads:''}</div></div><div class="fav-a"><span class="prfl-v">${p.riv}</span><button class="ib" onclick='loadProfile(${JSON.stringify(p)})'><i class="ti ti-arrow-right"></i></button><button class="ib d" onclick="deleteProfile(${p.id})"><i class="ti ti-trash"></i></button></div></div>`).join('');
+}
+
+function deleteFav(id){favs=favs.filter(f=>f.id!==id);save();rendFavs()}
+
+function rendFavs(){
+  const el=document.getElementById('fav-list');
+  if(!favs.length){el.innerHTML='<div class="empty"><i class="ti ti-star"></i>No saved presets yet.<br>Calculate something and tap Save.</div>';return}
+  el.innerHTML='<div class="sl" style="margin-bottom:8px">'+favs.length+' saved preset'+(favs.length>1?'s':'')+'</div>'+favs.map(f=>`<div class="fav-i"><div><div class="fav-n">${f.name}</div><div class="fav-m">${f.type}${f.meta?' · '+f.meta:''}</div></div><div class="fav-a"><span class="fav-v">${f.val}</span><button class="ib d" onclick="deleteFav(${f.id})"><i class="ti ti-trash"></i></button></div></div>`).join('');
+}
+
+load();
+</script>
